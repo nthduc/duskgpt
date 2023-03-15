@@ -238,7 +238,7 @@ def run_discord_bot():
     @client.tree.command(name="help", description="Show help for the bot")
     async def help(interaction: discord.Interaction):
         await interaction.response.defer(ephemeral=False)
-        await interaction.followup.send(""":star:**BASIC COMMANDS** \n
+        await interaction.followup.send("""**BASIC COMMANDS** \n
         - `/chat [message]` Chat with ChatGPT!
         - `/draw [prompt]` Generate an image with the Dalle2 model
         - `/switchpersona [persona]` Switch between optional chatGPT jailbreaks
@@ -260,7 +260,7 @@ def run_discord_bot():
                 `UNOFFICIAL`: Website ChatGPT
                 Modifying CHAT_MODEL field in the .env file change the default model
 
-        For complete documentation, please visit https://github.com/Zero6992/chatGPT-discord-bot""")
+    """)
 
         logger.info(
             "\x1b[31mSomeone needs help!\x1b[0m")
