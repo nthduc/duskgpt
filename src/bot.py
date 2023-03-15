@@ -265,7 +265,7 @@ def run_discord_bot():
         logger.info(
             "\x1b[31mSomeone needs help!\x1b[0m")
 
-    @client.tree.command(name="draw", description="Generate an image with the Dalle2 model")
+    @client.tree.command(name="imagine", description="Generate an image with the Dalle2 model")
     async def draw(interaction: discord.Interaction, *, prompt: str):
         isReplyAll =  os.getenv("REPLYING_ALL")
         if isReplyAll == "True":
