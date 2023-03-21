@@ -238,9 +238,9 @@ def run_discord_bot():
     @client.tree.command(name="help", description="Show help for the bot")
     async def help(interaction: discord.Interaction):
         await interaction.response.defer(ephemeral=False)
-        await interaction.followup.send("""**BASIC COMMANDS** \n
+        await interaction.followup.send(""":star:**BASIC COMMANDS** \n
         - `/chat [message]` Chat with ChatGPT!
-        - `/draw [prompt]` Generate an image with the Dalle2 model
+        - `/imagine [prompt]` Generate an image with the Dalle2 model
         - `/switchpersona [persona]` Switch between optional chatGPT jailbreaks
                 `random`: Picks a random persona
                 `chatgpt`: Standard chatGPT mode
@@ -258,15 +258,13 @@ def run_discord_bot():
         - `/chat-model` Switch different chat model
                 `OFFICIAL`: GPT-3.5 model
                 `UNOFFICIAL`: Website ChatGPT
-                Modifying CHAT_MODEL field in the .env file change the default model
-
-        """)
+                Modifying CHAT_MODEL field in the .env file change the default model""")
 
         logger.info(
             "\x1b[31mSomeone needs help!\x1b[0m")
 
     @client.tree.command(name="imagine", description="Generate an image with the Dalle2 model")
-    async def draw(interaction: discord.Interaction, *, prompt: str):
+    async def imagine(interaction: discord.Interaction, *, prompt: str):
         isReplyAll =  os.getenv("REPLYING_ALL")
         if isReplyAll == "True":
             await interaction.response.defer(ephemeral=False)
@@ -281,12 +279,12 @@ def run_discord_bot():
         username = str(interaction.user)
         channel = str(interaction.channel)
         logger.info(
-            f"\x1b[31m{username}\x1b[0m : /draw [{prompt}] in ({channel})")
+            f"\x1b[31m{username}\x1b[0m : /imagine [{prompt}] in ({channel})")
 
 
         await interaction.response.defer(thinking=True)
         try:
-            path = await art.draw(prompt)
+            path = await art.imagine(prompt)
 
             file = discord.File(path, filename="image.png")
             title = '> **' + prompt + '**\n'
