@@ -12,7 +12,7 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # generate 512x512 image and save to a file
 # return the path of the image as a str
-async def imagine(prompt) -> str:
+async def draw(prompt) -> str:
     DATA_DIR = Path.cwd()
     DATA_DIR.mkdir(exist_ok=True)
 
